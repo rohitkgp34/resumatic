@@ -1,0 +1,58 @@
+{
+    "name": "first-network-org${i}",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org${i}",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Org${i}": {
+            "mspid": "Org${i}MSP",
+            "peers": [
+                "peer0.org${i}.example.com",
+                "peer1.org${i}.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.org${i}.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.org${i}.example.com": {
+            "url": "grpcs://${IP}:${PORT1}",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/org${i}.example.com/tlsca/tlsca.org${i}.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org${i}.example.com"
+            }
+        },
+        "peer1.org${i}.example.com": {
+            "url": "grpcs://${IP}:${PORT2}",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/org${i}.example.com/tlsca/tlsca.org${i}.example.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org${i}.example.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.org${i}.example.com": {
+            "url": "https://${IP}:${PORT_CA}",
+            "caName": "ca-org${i}",
+            "tlsCACerts": {
+                "path": "crypto-config/peerOrganizations/org${i}.example.com/tlsca/tlsca.org${i}.example.com-cert.pem"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

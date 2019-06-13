@@ -1,0 +1,38 @@
+{% extends "orders/base_dash.html" %}
+{% block content %}
+    {% if user.is_staff %}
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{% url 'orderhistory' %}">
+                <div class="first-cont text-center">
+                    <span class="home-heading">Order History</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'register' %}">
+                <div class="second-cont text-center">
+                    <span class="home-heading">Register A User</span>
+                </div>
+            </a>
+        </div>         
+     </div>
+    {% else %}
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{% url 'adform' %}">
+                <div class="first-cont text-center">
+                    <span class="home-heading">Post an Ad</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'history' %}">
+                <div class="second-cont text-center">
+                    <span class="home-heading">Posted Ads</span>
+                </div>
+            </a>
+        </div>         
+     </div>
+    {% endif %}
+{% endblock content %}

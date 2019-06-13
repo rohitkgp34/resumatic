@@ -1,0 +1,4 @@
+To add a manager to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-5mtphmtbr4yz1d8hthzdjuxg9zt654855zzs3kkwomb3ta4afc-2c70qwr7gjnay0weal7mbgboi 192.168.1.15:2377
+

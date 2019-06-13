@@ -1,0 +1,46 @@
+{% extends "orders/base_dash.html" %}
+{% block content %}
+<div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Order History</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>File</th>
+                      <th>Link</th>
+                      <th>Text</th>
+                      <th>Text Color</th>
+                      <th>Bg Color</th>
+                      <th>Date Posted</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  	{% for ad in ads %}
+                    <tr>
+                      <td>{{ ad.task_by.username }}</td>
+                      {% if ad.document %}
+                      <td><a href="{{ ad.document.url }}">{{ ad.document }}</a></td>
+                      {% else %}
+                       <td>{{ ad.document }}</td>
+                      {% endif %}
+                      <td>{{ ad.link }}</td>
+                      <td>{{ ad.text }}</td>
+                      <td>{{ ad.text_color }}</td>
+                      <td>{{ ad.bg_color }}</td>
+                      <td>{{ ad.date_uploaded }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Note: The table contains orders posted by all the users.</div>
+          </div>
+<!-- {% for ad in ads %}
+    <h1>Hi: {{ ad.date_uploaded }}</h1> 
+{% endfor %}
+ -->{% endblock content %}

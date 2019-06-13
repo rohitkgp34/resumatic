@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Resumatic &mdash; 2019</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
+    <link rel="stylesheet" href="{% static 'kyc/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'kyc/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'kyc/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'kyc/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'kyc/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'kyc/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'kyc/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'kyc/css/animate.css' %}">
+    
+    
+    <link rel="stylesheet" href="{% static 'kyc/fonts/flaticon/font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'kyc/css/fl-bigmug-line.css' %}">
+  
+    <link rel="stylesheet" href="{% static 'kyc/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'kyc/css/style.css' %}">
+    
+  </head>
+
+<body>
+
+  <!--==========================
+  Header
+  ============================-->
+    <header class="site-navbar py-1" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-6 col-xl-2">
+            <h1 class="mb-0"><a href="{% url 'welcome' %}" class="text-black h2 mb-0">Resu<strong>Matic</strong></a></h1>
+          </div>
+
+          <div class="col-10 col-xl-10 d-none d-xl-block">
+            <nav class="site-navigation text-right" role="navigation">
+
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                
+                {% if not user.is_authenticated %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% else %}
+                <li class="active"><a href="{% url 'welcome' %}">Profile | {{user.username}}</a>
+                </li><a href="contact.html">Settings</a></li>
+                <li><a href="{% url 'make-claim' %}"><span class="rounded py-2 px-3 text-white" style="background: rgb(1, 1, 1);"><span class="h5 mr-2">+</span>Add Credentials</span></a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+
+          <div class="col-6 col-xl-2 text-right d-block">
+            
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>
+
+    <div class="m-0 w-100">
+      {% if messages%}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div> 
+      {% endfor%}
+      {% endif %}
+    </div>
+    
+    {% block content %}{% endblock %}
+
+  <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="row">
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">ResuMatic Inc.</h3>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading mb-4">Contact Info</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="d-block text-white">Address</span>
+                New York - 2398 10 Hadson Carl Street
+              </li>
+              <li>
+                <span class="d-block text-white">Telephone</span>
+                +1 232 305 3930
+              </li>
+              <li>
+                <span class="d-block text-white">Email</span>
+                info@yourdomain.com
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            
+            Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- JavaScript Libraries -->
+
+  <script src="{% static 'kyc/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'kyc/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'kyc/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'kyc/js/popper.min.js' %}"></script>
+  <script src="{% static 'kyc/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'kyc/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'kyc/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'kyc/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'kyc/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'kyc/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'kyc/js/aos.js' %}"></script>
+  
+  <script>
+      // This example displays an address form, using the autocomplete feature
+      // of the Google Places API to help users fill in the information.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+  <script src="{% static 'kyc/js/main.js' %}"></script>
+
+</body>
+</html>

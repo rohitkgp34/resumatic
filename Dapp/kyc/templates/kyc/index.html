@@ -1,0 +1,68 @@
+{% extends "orders/base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="site-section bg-light">
+
+    {% if user.is_authenticated %}
+      <div class="container">
+        <div class="row justify-content-start text-left mb-5">
+          <div class="col-md-9 " data-aos="fade">
+            {% if user.profile.is_org %}
+            <h2 class="font-weight-bold text-black">Requests</h2>
+            {% else %}
+            <h2 class="font-weight-bold text-black">Curriculum Vitae</h2>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Resume starts here -->
+        {% for cert in certs %}
+         <div class="row" data-aos="fade">
+         <div class="col-md-12">
+           <div class="job-post-item bg-white p-4 d-block align-items-center">
+
+              <div class="mb-4 mb-md-0 mr-5">
+               <div class="job-post-item-header d-flex align-items-center">
+                 <h2 class="mr-3 text-black h4">{{cert.1.Skill}}</h2>
+                   <div class="badge-wrap">
+                    {% if cert.1.IsVerified == "True" %}
+                    <span class="bg-success text-white badge py-2 px-4">Verified</span>
+                    {% else %}
+                    <span class="bg-warning text-white badge py-2 px-4">Not Verified</span>
+                    {% endif %}
+                   </div>
+               </div>
+               <div class="job-post-item-body d-block d-md-flex">
+                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#">{{cert.1.OrgID}}</a></div>
+                 <div class="mr-3"><span class="fl-bigmug-line-big104"></span> <span>{{cert.1.Timestamp}}</span></div>
+                 <div><span>#ID: {{cert.0}}</span></div>
+                 {% if not user.profile.is_org %}
+                  <div class="ml-auto float-right">
+                    <a href="#" class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>
+                  </div>
+                   </div>
+               {% else %}
+                    <form method="POST" class="ml-5">
+                      {% csrf_token %}
+                      <input type="text" name="token" value="{{cert.0}}" hidden>
+                      <button class="btn btn-info" name="Decision" value="Confirm">Confirm</button>
+                      <button class="btn btn-danger" name="Decision" value="Deny">Deny</button>
+                    </form>
+                {% endif %}
+               </div>        
+                 
+              </div>
+           </div>
+         </div>
+        {% endfor %}
+
+        </div>
+      </div>
+
+      {% else %}
+        <h1 class="text-center">Welcome to ResuMatic</h1>
+      {% endif %} 
+    </div>  
+
+{% endblock %}

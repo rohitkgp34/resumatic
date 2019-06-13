@@ -1,0 +1,103 @@
+{% extends "orders/base_dash.html" %}
+{% block content %}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td {
+  padding: 8px;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+<script>
+function modaltext(tex){
+    document.getElementById('modal_val').innerHTML = tex;
+}
+</script>
+		<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+        	<h4 class="modal-title">Text</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>  
+	        </div>
+	        <div class="modal-body">
+	          <p id='modal_val' style="overflow-wrap: break-word;"></p>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			{% for ad in ads %}
+			<div class="col-lg-12" style="border-radius: 1em;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding: 0px;margin: 10px;">
+			<div style="height: 3.5em;background-color: black;">
+				<h3 class="py-3 text-center"><span style="color: #eeeeee">Order</span></h3>
+			</div>
+			<small style="float: right;padding: 5px;" class="text-muted">{{ ad.date_uploaded|date:"F d, Y" }}</small>
+			<table style="padding: 1em;table-layout:fixed;">
+				 {% if ad.document %}
+				<tr>
+					<td>
+						<b>Image/Video</b>
+					</td>
+					<td>
+						<a href="{{ ad.document.url }}">Click to Download</a>
+					</td>
+				</tr>
+				{% endif %}
+				{% if ad.link %}
+				<tr>
+					<td>
+						<b>Link</b>
+					</td>
+					<td>
+						<div style="white-space: nowrap; overflow: hidden;">{{ ad.link }}</div>
+					</td>
+				</tr>
+				{% endif %}
+				{% if ad.text %}
+				<tr>
+					<td>
+						<b>Text</b>
+					</td>
+					<td>
+					<a data-toggle="modal" data-target="#myModal"><div style="white-space: nowrap; overflow: hidden;" onclick="modaltext('{{ ad.text }}')" data-toggle="tooltip" title="Click To Expand">{{ ad.text }}</div></a>
+					</td>
+				</tr>
+				{% endif %}
+				{% if ad.text_color %}
+				<tr>
+					<td>
+						<b>Text Color</b>
+					</td>
+					<td style="text-decoration: underline;text-decoration-color: {{ ad.text_color }}">
+						{{ ad.text_color }}
+					</td>
+				</tr>
+				{% endif %}
+				{% if ad.bg_color %}
+				<tr>
+					<td>
+						<b>Bg Color</b>
+					</td>
+					<td style="text-decoration: underline;text-decoration-color: {{ ad.bg_color }}">
+						{{ ad.bg_color }}
+					</td>
+				</tr>
+				{% endif %}
+			</table>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+<!-- {% for ad in ads %}
+    <h1>Hi: {{ ad.date_uploaded }}</h1> 
+{% endfor %}
+{% endblock content %} -->

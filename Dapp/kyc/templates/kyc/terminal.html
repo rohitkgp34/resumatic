@@ -1,0 +1,29 @@
+{% extends "orders/base.html" %}
+{% load static %}
+{% block content %}
+<section id="why-us" class="wow fadeIn">
+      <div class="container">
+        <header class="section-header">
+          <h3>Utilities</h3>
+          <p>Enjoy automation. We know.</p>
+        </header>
+        <div class="row row-eq-height justify-content-center">
+        	{% for thing in names %}
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+                <i class="fa fa-diamond"></i>
+              <div class="card-body">
+                <h5 class="card-title">{{thing.0}}</h5>
+                <p class="card-text">{{thing.1}}</p>
+                <a href="{% url 'terminal' key=thing.2 %}" class="readmore">Let's do this</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section>
+
+{% endblock %}

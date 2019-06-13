@@ -1,0 +1,10 @@
+{% extends "orders/base.html" %}
+{% block content %}
+	<br>
+    <div class="alert" style="min-height: 300px;" role="alert">
+	  <h4 class="alert-heading">Well done!</h4>
+	  <p>You have successfully logged out</p>
+	  <hr>
+	  <p class="mb-0">In case you want to <a href="{% url 'login' %}">login</a> again.</p>
+	</div>
+{% endblock content %}
