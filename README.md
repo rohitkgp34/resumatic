@@ -1,10 +1,12 @@
 # ResuMatic #
 
-## Solution Proposal  ##
+## Problems  ##
 
 * **Fake Resume and Personal Branding**
 * **Long Verification process**
 * **High manual labour and costs**
+
+![](fakeresume.PNG)
 
 ## Solution Proposal  ##
 
