@@ -6,9 +6,9 @@
 
 ## Problems  ##
  
-* ** Fake Resume **
-* ** Long Verification process **
-* ** High manual labour and costs **
+* Fake Resume 
+* Long Verification process
+* High manual labour and costs
 
 ## Fake Resume ##
 
@@ -16,8 +16,8 @@
 
 ## Solution Proposal  ##
 
-* ** We propose to build a dApp that verifies users’ credentials and stores the evidence as immutable transaction records on the blockchain ledger i.e. Once Verified, Always Verified! **
-* ** In simple terms, we provide authentication and verification to ones resume. **
+* We propose to build a dApp that verifies users’ credentials and stores the evidence as immutable transaction records on the blockchain ledger i.e. Once Verified, Always Verified!
+* In simple terms, we provide authentication and verification to ones resume.
 
 ![](sol_architecture.PNG)
 
@@ -35,6 +35,6 @@
 * Lower Hiring Costs
 * Improves Reputation of Institutes
 
-### Link to PPT -###
+### Link to PPT ###
 
 https://docs.google.com/presentation/d/1xuRrYsP10PB7IkScKBc_2iVKIsIh1ADBVMHFLi3cQJA/edit#slide=id.g25f6af9dd6_0_0
